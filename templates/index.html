@@ -34,7 +34,7 @@
                     Bank for your wise Ideas
                 </div>
               </div>
-              <div class="col-8 header-column" hidden>
+              <div class="col-8 header-column" id="headerColumn">
                 <div class="card header-card">
                         <div class="header-text">
                             Your Idea was succesfully placed in our Bank. Thank you!
@@ -47,7 +47,7 @@
                     <img src="../static/svg/owl-default-open.svg" alt="closed owl">
                 </div>
             </div>
-            <div class="row cards-row" hidden>
+            <div class="row cards-row" id="rowCards">
               <div class="col">
                 <div class="card">
                     <div class="card-body">
@@ -88,7 +88,7 @@
                 </div>
               </div>
             </div>
-            <div class="row cards-row two-col-row" hidden>
+            <div class="row cards-row two-col-row" id="rowCards2">
                 <div class="col first-col">
                     <div class="card">
                         <div class="card-body">
@@ -116,7 +116,7 @@
                     </div>
                   </div>
             </div>
-            <div class="row cards-row" hidden=>
+            <div class="row cards-row" id="rowCards3">
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
@@ -157,7 +157,7 @@
                     </div>
                   </div>
               </div>
-            <div class="row cards-row two-col-row" hidden>
+            <div class="row cards-row two-col-row" id="rowCards4">
                 <div class="col first-col">
                     <div class="card">
                         <div class="card-body">
@@ -185,7 +185,7 @@
                     </div>
                   </div>
             </div>
-            <div class="row form-row">
+            <div class="row form-row" id="createForm">
                 <div class="col form-col">
                     <form method="post" class="flex-column">
                         <div class="form-group flex-row">
@@ -220,15 +220,15 @@
                                           class="description-area">{{ request.form['body'] }}</textarea>
                         </div>
                         <div class="form-group button-group">
-                            <button type="cancel" class="button-cancel">Cancel</button>
+                            <button type="cancel" class="button-cancel" onclick="cancel()">Cancel</button>
                             <button type="submit" class="button-send" onclick="submitNewIdea()">Send</button>
                         </div>
                     </form>
                 </div> 
             </div>
-            <div class="row" hidden>
+            <div class="row" id="createButton">
                 <div class="col create-button-column">
-                    <button type="button" class="btn btn-primary create-button">Create your Idea</button>
+                    <button type="button" class="btn btn-primary create-button" onclick="showForm()">Create your Idea</button>
                 </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

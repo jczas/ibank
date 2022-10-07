@@ -40,8 +40,13 @@ function addNewIdea(nick, subject, body) {
         });
 }
 
+function cancel() {
+    showInit();
+}
+
 function submitNewIdea() {
     console.log("Submitting...");
+    showInit();
     const form = document.querySelector('form');
     const formData = new FormData(form);
     addNewIdea(formData.get('nick'), formData.get('subject'), formData.get('description'))
@@ -52,6 +57,26 @@ function preventFormReloading() {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
     })
+}
+
+function showInit() {
+    document.getElementById('createForm').hidden = true;
+    document.getElementById('headerColumn').hidden = false;
+    document.getElementById('rowCards').hidden = false;
+    document.getElementById('rowCards2').hidden = false;
+    document.getElementById('rowCards3').hidden = false;
+    document.getElementById('rowCards4').hidden = false;
+    document.getElementById('createButton').hidden = false;
+}
+
+function showForm() {
+    document.getElementById('createForm').hidden = false;
+    document.getElementById('headerColumn').hidden = true;
+    document.getElementById('rowCards').hidden = true;
+    document.getElementById('rowCards2').hidden = true;
+    document.getElementById('rowCards3').hidden = true;
+    document.getElementById('rowCards4').hidden = true;
+    document.getElementById('createButton').hidden = true;
 }
 
 preventFormReloading();
