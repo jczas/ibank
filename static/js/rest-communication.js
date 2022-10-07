@@ -57,6 +57,7 @@ function fetchIdeas() {
 function submitNewIdea() {
     console.log("Submitting...");
     showInit();
+    document.getElementById('headerColumn').hidden = false;
     const form = document.querySelector('form');
     const formData = new FormData(form);
     addNewIdea(formData.get('nick'), formData.get('subject'), formData.get('description'))
@@ -71,7 +72,7 @@ function preventFormReloading() {
 
 function showInit() {
     document.getElementById('createForm').hidden = true;
-    document.getElementById('headerColumn').hidden = false;
+    document.getElementById('headerColumn').hidden = true;
     document.getElementById('rowCards').hidden = false;
     document.getElementById('rowCards2').hidden = false;
     document.getElementById('rowCards3').hidden = false;
@@ -87,6 +88,11 @@ function showForm() {
     document.getElementById('rowCards3').hidden = true;
     document.getElementById('rowCards4').hidden = true;
     document.getElementById('createButton').hidden = true;
+    document.getElementById('nickInput').value = "";
+    document.getElementById('subjectInput').value = "";
+    document.getElementById('descriptionInput').value = "";
+    document.getElementById('submitButton').disabled = true;
+    document.getElementById('submitButton').setAttribute("style", "background-color: #CAD0C2;");
     document.getElementById('creationDate').innerHTML = getDate(0).bold();
     document.getElementById('disappearanceDate').innerHTML = "In ".bold() + getDisappearanceTime(86400).bold();
 }
@@ -112,6 +118,20 @@ function getDisappearanceTime(numberOfSeconds) {
     if (minutes < 10) {minutes = "0"+minutes;}
     if (seconds < 10) {seconds = "0"+seconds;}
     return hours+':'+minutes+':'+seconds;
+}
+
+function validateInputs() {
+    if ((document.getElementById('nickInput').value.length > 0) &&
+        (document.getElementById('subjectInput').value.length > 0) &&
+        (document.getElementById('descriptionInput').value.length > 0)
+    ) {
+        document.getElementById('submitButton').disabled = false;
+        document.getElementById('submitButton').setAttribute("style", "background-color: #F27127;");
+    } else {
+        document.getElementById('submitButton').disabled = true;
+        document.getElementById('submitButton').setAttribute("style", "background-color: #CAD0C2;");
+
+    }
 }
 
 function getCardBodyById(cardId) {

@@ -241,7 +241,7 @@
             <form method="post" class="flex-column">
                 <div class="form-group flex-row">
                     <div class="nick">
-                        <input type="text" name="nick" class="nick-input"
+                        <input type="text" name="nick" id="nickInput" oninput="validateInputs()" class="nick-input"
                                placeholder="Post author"
                                value="{{ request.form['nick'] }}"></input>
                     </div>
@@ -261,18 +261,18 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="subject" class="subject-input"
+                    <input type="text" name="subject" id="subjectInput" oninput="validateInputs()" class="subject-input"
                            placeholder="Post title"
                            value="{{ request.form['subject'] }}"></input>
                     <hr>
                 </div>
                 <div class="form-group left-right">
-                                <textarea name="description" placeholder="Post a brief description of the idea"
+                                <textarea name="description" id="descriptionInput" oninput="validateInputs()" placeholder="Post a brief description of the idea"
                                           class="description-area">{{ request.form['body'] }}</textarea>
                 </div>
                 <div class="form-group button-group">
                     <button type="cancel" class="button-cancel" onclick="showInit()">Cancel</button>
-                    <button type="submit" class="button-send" onclick="submitNewIdeaAndFly()">Send</button>
+                    <button id="submitButton" type="submit" class="button-send" onclick="submitNewIdeaAndFly()">Send</button>
                 </div>
             </form>
         </div>
