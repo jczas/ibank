@@ -20,13 +20,12 @@ def test():
 def handle_message(data):
     print('received message: ' + data)
 
-@socketio.on('my event')
+@socketio.on('all ideas')
 def handle_my_custom_event(event):
     print('received json: ' + str(event))
     print('data: ' + event['data'])
     event['reply'] = 'sss'
-    emit('my event', event, json=True , broadcast=True)
-
+    emit('all ideas', event, json=True , broadcast=True)
 
 @app.teardown_appcontext
 def closeDatabaseConnection(exception):
