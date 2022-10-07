@@ -3,6 +3,11 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <title>Title</title>
 
     <link rel="icon" href="{{ url_for('static', filename = 'Kier.svg') }}" type="image/svg+xml">
@@ -17,9 +22,7 @@
     </script>
 </head>
 <body>
-<p>
-    Hello world! 4
-    <img src="{{ url_for('static', filename = 'background-combined.svg') }}" alt="forest">
-</p>
+    <div class="container">
+    </div>
 </body>
 </html>
