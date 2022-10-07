@@ -1,3 +1,7 @@
+html {
+    height: 100%;
+}
+
 body {
     height: 100%;
     background-image: url(../svg/background-combined.svg);
@@ -5,16 +9,116 @@ body {
     -o-background-size: 100% 100%;
     -webkit-background-size: 100% 100%;
     background-size: cover;
+    font-family: 'Open Sans';
+    font-style: normal;
 }
 
-.center-screen {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    height: 475px;
-    width: 1010px;
+.header {
+    padding-left: 36px;
+}
+
+.header-first-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.app-name {
+    font-size: 64px;
+    font-weight: 800;
+    color: #F27127;
+}
+
+.app-description {
+    font-size: 22px;
+    font-weight: 600;
+    color: #F27127;
+}
+
+.header-column {
+    padding-top: 3%;
+}
+
+.header-card {
+    height: 48px;
+    width: 668px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #92C14F !important;
+}
+
+.header-text {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.container {
+    height: inherit;
+    width: inherit;
+}
+
+.cards-row {
+    padding-bottom: 4.5%;
+}
+
+.card {
+    width: 400px;
+    border-color: #849284 !important;
+    border-radius: 15px !important;
+}
+
+.first-col {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.create-button-column {
+    display: flex;
+    justify-content: center;
+}
+
+.create-button {
+    font-weight: 700 !important;
+    font-size: 24px !important;
+    background-color: #F27127 !important;
+    color: black !important;
+    height: 58px !important;
+    width: 330px !important;
+    border-color: black !important;
+    border-radius: 15px !important;
+}
+
+.card-body {
+    display: flex;
+    justify-content: space-between;
+    background-color: #5A7258 !important;
+    border-radius: 14px !important;
+    height: 76px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    align-items: center;
+}
+
+.card-body-filled {
+    background-color: #FDFBEF !important;
+}
+
+.text {
+    max-width: 290px;
+    color: black;
+}
+
+.badge {
+    font-size: 20px !important;
+    color: black !important;
+}
+
+.form-row {
+    display: flex;
+    justify-content: center;
+}
+
+.form-col {
     border-radius: 15px;
     background-color: #FDFBEF;
 }
@@ -27,34 +131,55 @@ body {
 
 .flex-row {
     display: flex;
-    flex-direction: row;
-    column-gap: 30px;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    margin-bottom: 1%;
 }
 
 .nick-input {
-    width: 450px;
+    width: 100%;
     height: 52px;
     background-color: #FDFBEF;
     border-radius: 15px;
     border: 1px solid #2B1A08;
+    padding-left: 10px;
+}
+
+.nick {
+    flex: 2 1 auto;
+}
+
+.info-group {
+    padding-left: 10%;
+    flex: 1 1 auto;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .subject-input {
-    width: 936px;
+    width: 100%;
     height: 52px;
     background-color: #FDFBEF;
     border-radius: 15px;
     border: 1px solid #2B1A08;
+    padding-left: 10px;
 }
 
 .description-area {
-    width: 936px;
+    width: 100%;
     height: 134px;
     background-color: #FDFBEF;
     border-radius: 15px;
     border: 1px solid #2B1A08;
+    margin-bottom: 2%;
+    padding-left: 10px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
 }
 
 .info-label {
