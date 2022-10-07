@@ -1,8 +1,8 @@
 var messageDiv;
 
-function init() {
+function initWebSocket() {
     var socket = io();
-    showInit();
+
     messageDiv = document.getElementById("message");
 
     socket.on("all ideas", (event) => {
