@@ -5,6 +5,8 @@
     <meta charset="utf-8"/>
     <title>Title</title>
 
+    <link rel="icon" href="{{ url_for('static', filename = 'Kier.svg') }}" type="image/svg+xml">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
             integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf-8">
@@ -16,7 +18,8 @@
 </head>
 <body>
 <p>
-    Hello world! 3
+    Hello world! 4
+    <img src="{{ url_for('static', filename = 'background-combined.svg') }}" alt="forest">
 </p>
 </body>
 </html>
