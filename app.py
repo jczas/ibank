@@ -14,6 +14,7 @@ def hello():
 
 @app.route('/ping')
 def ping():
+    print("Remote addr: " + request.remote_addr)
     return 'ok'
 
 @app.route('/idea/add', methods=['POST'])
