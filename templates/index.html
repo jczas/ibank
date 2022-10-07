@@ -3,12 +3,13 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <title>Title</title>
     <link rel="icon" href="{{ url_for('static', filename = 'svg/kier.svg') }}" type="image/svg+xml">
-
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
             integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
@@ -20,49 +21,220 @@
 
 </head>
 <body onload="init()">
-
-<div class="container">
-    <button id="sendIdea" onclick="sendIdea()">Send Idea</button>
-    <button id="likeIdea" onclick="sendIdeaLike(1)">Like Idea</button>
-    <button id="addIdea" onclick="addNewIdea('Jakub','Test','Test')">Add idea</button>
-    <div id="message" class="block"></div>
-    <div style="visibility: visible;" class="center-screen">
-        <form method="post" class="flex-column">
-            <div class="form-group flex-row">
-                <div>
-                    <input type="text" name="nick" class="nick-input"
-                           placeholder="Post author"
-                           value="{{ request.form['nick'] }}"></input>
+        <div class="container">
+            <!-- <div style="visibility: hidden">
+                <button id="sendIdea" onclick="sendIdea()">Send Idea</button>
+                <button id="likeIdea" onclick="sendIdeaLike(1)">Like Idea</button>
+                <button id="addIdea" onclick="addNewIdea('Jakub','Test','Test')">Add idea</button>
+                <div id="message" class="block"></div>
+            </div> -->
+            <div class="row header">
+              <div class="col header-first-col">
+                <div class="app-name">
+                    I-BANK
                 </div>
-                <div>
-                    <text class="info-label">When created:</text>
-                    <text class="info-text"><b>example date</b></text>
+                <div class="app-description">
+                    Bank for your wise Ideas
                 </div>
-                <div>
-                    <text class="info-label">When disappears:</text>
-                    <text class="info-text"><b>example date</b></text>
+              </div>
+              <div class="col-8 header-column" hidden>
+                <div class="card header-card">
+                        <div class="header-text">
+                            Your Idea was succesfully placed in our Bank. Thank you!
+                        </div>
                 </div>
-                <div>
-                    <text class="info-label">Likes:</text>
-                    <text class="info-text"><b>001</b>&#09<img src="static/svg/kier.svg"/></text>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img src="../static/svg/owl-default-open.svg" alt="closed owl">
                 </div>
             </div>
-            <div class="form-group">
-                <input type="text" name="subject" class="subject-input"
-                       placeholder="Post title"
-                       value="{{ request.form['subject'] }}"></input>
-                <hr>
+            <div class="row cards-row" hidden>
+              <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                    <div class="text">
+                        This is some text within a card body.
+                    </div>
+                    <div class="badge-with-icon">
+                        <span class="badge">9</span>
+                        <img src="../static/svg/kier.svg">
+                    </div>
+                    </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text">
+                            This is some text within a card body.
+                        </div>
+                        <div class="badge-with-icon">
+                            <span class="badge">9</span>
+                            <img src="../static/svg/kier.svg">
+                        </div>
+                        </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text">
+                            This is some text within a card body.
+                        </div>
+                        <div class="badge-with-icon">
+                            <span class="badge">9</span>
+                            <img src="../static/svg/kier.svg">
+                        </div>
+                        </div>
+                </div>
+              </div>
             </div>
-            <div class="form-group left-right">
-                    <textarea name="description" placeholder="Post a brief description of the idea"
-                              class="description-area">{{ request.form['body'] }}</textarea>
+            <div class="row cards-row two-col-row" hidden>
+                <div class="col first-col">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="text">
+                                This is some text within a card body.
+                            </div>
+                            <div class="badge-with-icon">
+                                <span class="badge">9</span>
+                                <img src="../static/svg/kier.svg">
+                            </div>
+                            </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="text">
+                                This is some text within a card body.
+                            </div>
+                            <div class="badge-with-icon">
+                                <span class="badge">9</span>
+                                <img src="../static/svg/kier.svg">
+                            </div>
+                            </div>
+                    </div>
+                  </div>
             </div>
-            <div class="form-group button-group">
-                <button type="cancel" class="button-cancel">Cancel</button>
-                <button type="submit" class="button-send">Send</button>
+            <div class="row cards-row" hidden=>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="text">
+                                This is some text within a card body.
+                            </div>
+                            <div class="badge-with-icon">
+                                <span class="badge">9</span>
+                                <img src="../static/svg/kier.svg">
+                            </div>
+                            </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="text">
+                                This is some text within a card body.
+                            </div>
+                            <div class="badge-with-icon">
+                                <span class="badge">9</span>
+                                <img src="../static/svg/kier.svg">
+                            </div>
+                            </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="text">
+                                This is some text within a card body.
+                            </div>
+                            <div class="badge-with-icon">
+                                <span class="badge">9</span>
+                                <img src="../static/svg/kier.svg">
+                            </div>
+                            </div>
+                    </div>
+                  </div>
+              </div>
+            <div class="row cards-row two-col-row" hidden>
+                <div class="col first-col">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="text">
+                                This is some text within a card body.
+                            </div>
+                            <div class="badge-with-icon">
+                                <span class="badge">9</span>
+                                <img src="../static/svg/kier.svg">
+                            </div>
+                            </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card">
+                        <div class="card-body card-body-filled">
+                            <div class="text">
+                                This is some text within a card body. This is some text within a card body. This is some text within a card body. 
+                            </div>
+                            <div class="badge-with-icon">
+                                <span class="badge">9</span>
+                                <img src="../static/svg/kier.svg">
+                            </div>
+                            </div>
+                    </div>
+                  </div>
             </div>
-        </form>
+            <div class="row form-row">
+                <div class="col form-col">
+                    <form method="post" class="flex-column">
+                        <div class="form-group flex-row">
+                            <div class ="nick">
+                                <input type="text" name="nick" class="nick-input"
+                                       placeholder="Post author"
+                                       value="{{ request.form['nick'] }}"></input>
+                            </div>
+                            <div class="info-group">
+                                <div class="info">
+                                    <text class="info-label">When created:</text>
+                                    <text class="info-text"><b>example date</b></text>
+                                </div>
+                                <div class="info">
+                                    <text class="info-label">When disappears:</text>
+                                    <text class="info-text"><b>example date</b></text>
+                                </div>
+                                <div class="info">
+                                    <text class="info-label">Likes:</text>
+                                    <text class="info-text"><b>001</b>&#09<img src="static/svg/kier.svg"/></text>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" class="subject-input"
+                                   placeholder="Post title"
+                                   value="{{ request.form['subject'] }}"></input>
+                            <hr>
+                        </div>
+                        <div class="form-group left-right">
+                                <textarea name="description" placeholder="Post a brief description of the idea"
+                                          class="description-area">{{ request.form['body'] }}</textarea>
+                        </div>
+                        <div class="form-group button-group">
+                            <button type="cancel" class="button-cancel">Cancel</button>
+                            <button type="submit" class="button-send">Send</button>
+                        </div>
+                    </form>
+                </div> 
+            </div>
+            <div class="row" hidden>
+                <div class="col create-button-column">
+                    <button type="button" class="btn btn-primary create-button">Create your Idea</button>
+                </div>
+            </div>
     </div>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
