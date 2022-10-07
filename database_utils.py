@@ -6,7 +6,6 @@ database = './database.db'
 def get_ideas(g):
     conn = get_db(g)
     ideas = conn.execute('SELECT * FROM idea').fetchall()
-    conn.close()
     return ideas
 
 
@@ -16,14 +15,12 @@ def add_idea(nick, subject, body, g):
     conn_cursor.execute('INSERT INTO idea (nick,subject, body, likes, live_duration) VALUES (?,?,?,?,?)',
                  (nick, subject, body, 1, 60))
     conn.commit()
-    conn.close()
     return conn_cursor.lastrowid
 
 def add_like_to_idea(idea_id, g):
     conn = get_db(g)
     conn.execute(f'UPDATE idea SET likes = likes + 1 WHERE id = {idea_id}')
     conn.commit()
-    conn.close()
     return idea_id
 
 

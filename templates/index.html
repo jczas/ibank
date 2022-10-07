@@ -13,9 +13,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
             integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename = 'js/websocket-communication.js') }}">
-
-    </script>
-    <script src="{{ url_for('static', filename = 'js/rest-communication.js') }}">
     </script>
 
 </head>
@@ -58,10 +55,12 @@
             </div>
             <div class="form-group button-group">
                 <button type="cancel" class="button-cancel">Cancel</button>
-                <button type="submit" class="button-send">Send</button>
+                <button type="submit" class="button-send" onclick="submitNewIdea()">Send</button>
             </div>
         </form>
     </div>
 </div>
 </body>
+<script src="{{ url_for('static', filename = 'js/rest-communication.js') }}">
+</script>
 </html>
