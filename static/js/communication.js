@@ -1,28 +1,31 @@
+var messageDiv;
+var sendIdeaButton;
+
 function init() {
     var socket = io();
+    messageDiv = document.getElementById("message");
+    sendIdeaButton = document.getElementById('sendIdea');
 
-    var messageDiv;
-
-    socket.on('connect', function () {
-        const engine = socket.io.engine;
-        console.log(engine.transport.name);
-        console.log(`socket ${socket.id} connected`);
-
-        socket.emit('all ideas', {data: 'I\'m connected!', id: socket.id});
-
-        socket.on("disconnect", (reason) => {
-            console.log(`socket ${socket.id} disconnected due to ${reason}`);
-        });
-
-        socket.on("all ideas", (event) => {
-            messageDiv = document.getElementById("message");
-
-            messageDiv.innerHTML += "<p>reply:" + JSON.stringify(event) + "</p>";
-
-            console.log(JSON.stringify(event));
-        });
-
+    socket.on("connect", () => {
+        console.log("connect: " + socket.id);
     });
+
+    socket.on("disconnect", () => {
+        console.log("disconnect: " + socket.id);
+    });
+
+    socket.on("all ideas", (event) => {
+
+        messageDiv.innerHTML += "<p>reply:" + JSON.stringify(event) + "</p>";
+
+        console.log(JSON.stringify(event));
+    });
+}
+
+function sendIdea() {
+    var socket = io();
+
+        socket.emit('all ideas', {idea_id: 'idea id', user_id: socket.id});
 
 }
 

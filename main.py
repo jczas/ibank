@@ -23,8 +23,6 @@ def handle_message(data):
 @socketio.on('all ideas')
 def handle_my_custom_event(event):
     print('received json: ' + str(event))
-    print('data: ' + event['data'])
-    event['reply'] = 'sss'
     emit('all ideas', event, json=True , broadcast=True)
 
 @app.teardown_appcontext
