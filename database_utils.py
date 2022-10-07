@@ -5,7 +5,7 @@ database = './database.db'
 
 def get_ideas(g):
     conn = get_db(g)
-    ideas = conn.execute('SELECT * FROM idea').fetchall()
+    ideas = conn.execute('SELECT * FROM idea order by likes desc LIMIT 10').fetchall()
     return ideas
 
 

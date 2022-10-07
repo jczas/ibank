@@ -15,7 +15,6 @@
             integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename = 'js/websocket-communication.js') }}">
     </script>
-
 </head>
 <body onload="init()">
         <div class="container">
@@ -50,7 +49,7 @@
             <div class="row cards-row" id="rowCards">
               <div class="col">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body" id="cardBody0">
                     <div class="text">
                         This is some text within a card body.
                     </div>
@@ -63,7 +62,7 @@
               </div>
               <div class="col">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body" id="cardBody1">
                         <div class="text">
                             This is some text within a card body.
                         </div>
@@ -76,7 +75,7 @@
               </div>
               <div class="col">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body" id="cardBody2">
                         <div class="text">
                             This is some text within a card body.
                         </div>
@@ -91,7 +90,7 @@
             <div class="row cards-row two-col-row" id="rowCards2">
                 <div class="col first-col">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body" id="cardBody3">
                             <div class="text">
                                 This is some text within a card body.
                             </div>
@@ -104,7 +103,7 @@
                   </div>
                   <div class="col">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body" id="cardBody4">
                             <div class="text">
                                 This is some text within a card body.
                             </div>
@@ -119,7 +118,7 @@
             <div class="row cards-row" id="rowCards3">
                 <div class="col">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body" id="cardBody5">
                             <div class="text">
                                 This is some text within a card body.
                             </div>
@@ -132,7 +131,7 @@
                   </div>
                   <div class="col">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body" id="cardBody6">
                             <div class="text">
                                 This is some text within a card body.
                             </div>
@@ -145,7 +144,7 @@
                   </div>
                   <div class="col">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body" id="cardBody7">
                             <div class="text">
                                 This is some text within a card body.
                             </div>
@@ -160,7 +159,7 @@
             <div class="row cards-row two-col-row" id="rowCards4">
                 <div class="col first-col">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body" id="cardBody8">
                             <div class="text">
                                 This is some text within a card body.
                             </div>
@@ -173,7 +172,7 @@
                   </div>
                   <div class="col">
                     <div class="card">
-                        <div class="card-body card-body-filled">
+                        <div class="card-body card-body-filled" id="cardBody9">
                             <div class="text">
                                 This is some text within a card body. This is some text within a card body. This is some text within a card body. 
                             </div>
@@ -235,4 +234,5 @@
 </body>
 <script src="{{ url_for('static', filename = 'js/rest-communication.js') }}">
 </script>
+
 </html>

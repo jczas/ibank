@@ -40,6 +40,20 @@ function addNewIdea(nick, subject, body) {
         });
 }
 
+function fetchIdeas() {
+    return fetch("/idea/all",
+        {
+            method: "GET",
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+        })
+        .then((res) => {
+            return res.json()
+        })
+}
+
 function cancel() {
     showInit();
 }
@@ -77,6 +91,10 @@ function showForm() {
     document.getElementById('rowCards3').hidden = true;
     document.getElementById('rowCards4').hidden = true;
     document.getElementById('createButton').hidden = true;
+}
+
+function getCardBodyById(cardId) {
+    return  document.getElementById('cardBody'+cardId)
 }
 
 preventFormReloading();
