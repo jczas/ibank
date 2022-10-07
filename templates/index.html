@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8"/>
     <title>Title</title>
-    <link rel="icon" href="{{ url_for('static', filename = 'svg/kier.svg') }}" type="image/svg+xml">
-
+    <link rel="icon" href="{{ url_for('static', filename = 'svg/kier.svg') }}" type="image/svg+x
+ml">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -20,9 +20,45 @@
 <body onload="init()">
 
 <div class="container">
-    <p>glowa</p>
     <button id="sendLike" onclick="sendLike()">Send Like</button>
     <div id="message" class="block"></div>
+    <div style="visibility: visible;" class="center-screen">
+        <form method="post" class="flex-column">
+            <div class="form-group flex-row">
+                <div>
+                    <input type="text" name="nick" class="nick-input"
+                           placeholder="Post author"
+                           value="{{ request.form['nick'] }}"></input>
+                </div>
+                <div>
+                    <text class="info-label">When created:</text>
+                    <text class="info-text"><b>example date</b></text>
+                </div>
+                <div>
+                    <text class="info-label">When disappears:</text>
+                    <text class="info-text"><b>example date</b></text>
+                </div>
+                <div>
+                    <text class="info-label">Likes:</text>
+                    <text class="info-text"><b>001</b>&#09<img src="static/svg/kier.svg"/></text>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" name="subject" class="subject-input"
+                       placeholder="Post title"
+                       value="{{ request.form['subject'] }}"></input>
+                <hr>
+            </div>
+            <div class="form-group left-right">
+                    <textarea name="description" placeholder="Post a brief description of the idea"
+                              class="description-area">{{ request.form['body'] }}</textarea>
+            </div>
+            <div class="form-group button-group">
+                <button type="cancel" class="button-cancel">Cancel</button>
+                <button type="submit" class="button-send">Send</button>
+            </div>
+        </form>
+    </div>
 </div>
 </body>
 </html>
