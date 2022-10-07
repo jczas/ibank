@@ -12,10 +12,19 @@ def get_ideas(g):
 
 def add_idea(nick, subject, body, g):
     conn = get_db(g)
-    conn.execute('INSERT INTO idea (nick,subject, body, likes, live_duration) VALUES (?,?,?,?,?)',
+    conn_cursor = conn.cursor()
+    conn_cursor.execute('INSERT INTO idea (nick,subject, body, likes, live_duration) VALUES (?,?,?,?,?)',
                  (nick, subject, body, 1, 60))
     conn.commit()
     conn.close()
+    return conn_cursor.lastrowid
+
+def add_like_to_idea(idea_id, g):
+    conn = get_db(g)
+    conn.execute(f'UPDATE idea SET likes = likes + 1 WHERE id = {idea_id}')
+    conn.commit()
+    conn.close()
+    return idea_id
 
 
 def close_connection(exception, g):

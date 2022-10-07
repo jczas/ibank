@@ -4,23 +4,27 @@
 <head>
     <meta charset="utf-8"/>
     <title>Title</title>
-    <link rel="icon" href="{{ url_for('static', filename = 'svg/kier.svg') }}" type="image/svg+x
-ml">
+    <link rel="icon" href="{{ url_for('static', filename = 'svg/kier.svg') }}" type="image/svg+xml">
+
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
             integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
-    <script src="{{ url_for('static', filename = 'js/communication.js') }}">
+    <script src="{{ url_for('static', filename = 'js/websocket-communication.js') }}">
 
+    </script>
+    <script src="{{ url_for('static', filename = 'js/rest-communication.js') }}">
     </script>
 
 </head>
 <body onload="init()">
 
 <div class="container">
-    <button id="sendLike" onclick="sendLike()">Send Like</button>
+    <button id="sendIdea" onclick="sendIdea()">Send Idea</button>
+    <button id="likeIdea" onclick="sendIdeaLike(1)">Like Idea</button>
+    <button id="addIdea" onclick="addNewIdea('Jakub','Test','Test')">Add idea</button>
     <div id="message" class="block"></div>
     <div style="visibility: visible;" class="center-screen">
         <form method="post" class="flex-column">
