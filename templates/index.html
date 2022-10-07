@@ -15,6 +15,39 @@
             integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename = 'js/websocket-communication.js') }}">
     </script>
+
+    <script>
+        function blinkOwl2() {
+            rndimg = new Array(
+                "../static/svg/owl-default-closed.svg",
+                "../static/svg/owl-default-open.svg",
+                "../static/svg/owl-left.svg",
+                "../static/svg/owl-right.svg");
+            var numimages = 4;
+            x = (Math.floor(Math.random() * numimages));
+            randomimage = (rndimg[x]);
+            document.getElementById("owl").src = randomimage;
+
+            setTimeout(blinkOwl2, (Math.floor(Math.random() * 5000)));
+        }
+
+        function blinkOwl() {
+            document.getElementById("owl").src = "../static/svg/owl-default-closed.svg";
+            setTimeout(defaultOwl, 1000);
+        }
+
+        function defaultOwl() {
+            document.getElementById("owl").src = "../static/svg/owl-default-open.svg";
+            setTimeout(blinkOwl, (Math.floor(Math.random() * 5000)));
+        }
+
+        function init() {
+            initWebSocket();
+            showInit();
+            blinkOwl();
+        }
+    </script>
+
 </head>
 <body onload="init()">
         <div class="container">
@@ -43,7 +76,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <img src="../static/svg/owl-default-open.svg" alt="closed owl">
+                    <img id="owl" src="../static/svg/owl-default-open.svg" alt="closed owl">
                 </div>
             </div>
             <div class="row cards-row" id="rowCards">
@@ -184,7 +217,7 @@
                     </div>
                   </div>
             </div>
-            <div class="row form-row" id="createForm">
+            <div class="row form-row" id="createForm" hidden>
                 <div class="col form-col">
                     <form method="post" class="flex-column">
                         <div class="form-group flex-row">
@@ -196,11 +229,11 @@
                             <div class="info-group">
                                 <div class="info">
                                     <text class="info-label">When created:</text>
-                                    <text class="info-text"><b>example date</b></text>
+                                    <text class="info-text" id="creationDate"></text>
                                 </div>
                                 <div class="info">
                                     <text class="info-label">When disappears:</text>
-                                    <text class="info-text"><b>example date</b></text>
+                                    <text class="info-text" id="disappearanceDate"></text>
                                 </div>
                                 <div class="info">
                                     <text class="info-label">Likes:</text>
@@ -219,7 +252,7 @@
                                           class="description-area">{{ request.form['body'] }}</textarea>
                         </div>
                         <div class="form-group button-group">
-                            <button type="cancel" class="button-cancel" onclick="cancel()">Cancel</button>
+                            <button type="cancel" class="button-cancel" onclick="showInit()">Cancel</button>
                             <button type="submit" class="button-send" onclick="submitNewIdea()">Send</button>
                         </div>
                     </form>
@@ -230,6 +263,7 @@
                     <button type="button" class="btn btn-primary create-button" onclick="showForm()">Create your Idea</button>
                 </div>
     </div>
+        </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 <script src="{{ url_for('static', filename = 'js/rest-communication.js') }}">

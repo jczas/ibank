@@ -54,10 +54,6 @@ function fetchIdeas() {
         })
 }
 
-function cancel() {
-    showInit();
-}
-
 function submitNewIdea() {
     console.log("Submitting...");
     showInit();
@@ -91,6 +87,31 @@ function showForm() {
     document.getElementById('rowCards3').hidden = true;
     document.getElementById('rowCards4').hidden = true;
     document.getElementById('createButton').hidden = true;
+    document.getElementById('creationDate').innerHTML = getDate(0).bold();
+    document.getElementById('disappearanceDate').innerHTML = "In ".bold() + getDisappearanceTime(86400).bold();
+}
+
+function getDate(numberOfDays) {
+    const today = new Date();
+    today.setDate(today.getDate() + numberOfDays);
+    const yyyy = today.getFullYear();
+    let mm = today.getMonth() + 1; // Months start at 0!
+    let dd = today.getDate();
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
+    return dd + '.' + mm + '.' + yyyy;
+}
+
+function getDisappearanceTime(numberOfSeconds) {
+    var sec_num = parseInt(numberOfSeconds, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    return hours+':'+minutes+':'+seconds;
 }
 
 function getCardBodyById(cardId) {

@@ -15,10 +15,10 @@ function fillLeafs(event) {
     }
 }
 
-function init() {
+function initWebSocket() {
     var socket = io();
-    showInit();
     initializeIdeas();
+
     messageDiv = document.getElementById("message");
 
     socket.on("all ideas", (event) => {
