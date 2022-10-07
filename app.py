@@ -1,3 +1,7 @@
+from gevent import monkey
+
+monkey.patch_all()
+
 from flask import Flask, render_template, g, request, jsonify
 from flask_socketio import emit, SocketIO
 
@@ -5,17 +9,19 @@ import database_utils as db
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
-socketio = SocketIO(app)
+socketio = SocketIO(app, async_mode="gevent", cors_allowed_origins='*')
 
 
 @app.route('/')
 def hello():
     return render_template("index.html")
 
+
 @app.route('/ping')
 def ping():
     print("Remote addr: " + request.remote_addr)
     return 'ok'
+
 
 @app.route('/idea/add', methods=['POST'])
 def add_idea():
