@@ -1,7 +1,3 @@
-from gevent import monkey
-
-monkey.patch_all()
-
 from flask import Flask, render_template, g, request, jsonify
 from flask_socketio import emit, SocketIO
 
@@ -9,7 +5,7 @@ import database_utils as db
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
-socketio = SocketIO(app, async_mode="gevent", cors_allowed_origins='*')
+socketio = SocketIO(app)
 
 
 @app.route('/')
@@ -27,7 +23,9 @@ def ping():
 def add_idea():
     idea_data = request.json
     print(idea_data)
-    return jsonify(id=db.add_idea(idea_data['nick'], idea_data['subject'], idea_data['body'], g))
+    to_return = jsonify(id=db.add_idea(idea_data['nick'], idea_data['subject'], idea_data['body'], g))
+    socketio.emit('update_ideas', db.get_ideas(g), json=True, broadcast=True)
+    return to_return
 
 
 @app.route('/idea/like/<idea_id>', methods=['POST'])
@@ -48,7 +46,7 @@ def handle_message(data):
 @socketio.on('all ideas')
 def handle_my_custom_event(event):
     print('received json: ' + str(event))
-    emit('all ideas', db.get_ideas(g), json=True, broadcast=True)
+    socketio.emit('all ideas', db.get_ideas(g), json=True, broadcast=True)
 
 
 @app.teardown_appcontext

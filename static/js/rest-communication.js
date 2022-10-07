@@ -22,7 +22,7 @@ function addNewIdea(nick, subject, body) {
         nick: nick,
         subject: subject,
         body: body
-    }
+    };
     fetch("/idea/add",
         {
             method: "POST",
@@ -37,5 +37,21 @@ function addNewIdea(nick, subject, body) {
         })
         .then(id => {
             console.log(id)
-        })
+        });
 }
+
+function submitNewIdea() {
+    console.log("Submitting...");
+    const form = document.querySelector('form');
+    const formData = new FormData(form);
+    addNewIdea(formData.get('nick'), formData.get('subject'), formData.get('description'))
+}
+
+function preventFormReloading() {
+    const form = document.querySelector('form')
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+    })
+}
+
+preventFormReloading();
