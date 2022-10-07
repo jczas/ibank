@@ -40,6 +40,20 @@ function addNewIdea(nick, subject, body) {
         });
 }
 
+function fetchIdeas() {
+    return fetch("/idea/all",
+        {
+            method: "GET",
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+        })
+        .then((res) => {
+            return res.json()
+        })
+}
+
 function submitNewIdea() {
     console.log("Submitting...");
     showInit();
@@ -98,6 +112,10 @@ function getDisappearanceTime(numberOfSeconds) {
     if (minutes < 10) {minutes = "0"+minutes;}
     if (seconds < 10) {seconds = "0"+seconds;}
     return hours+':'+minutes+':'+seconds;
+}
+
+function getCardBodyById(cardId) {
+    return  document.getElementById('cardBody'+cardId)
 }
 
 preventFormReloading();

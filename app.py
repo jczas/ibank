@@ -30,7 +30,9 @@ def add_idea():
 
 @app.route('/idea/like/<idea_id>', methods=['POST'])
 def like_idea(idea_id):
-    return jsonify(id=db.add_like_to_idea(idea_id, g))
+    to_return = jsonify(id=db.add_like_to_idea(idea_id, g))
+    socketio.emit('update_ideas', db.get_ideas(g), json=True, broadcast=True)
+    return to_return
 
 
 @app.route('/idea/all')
