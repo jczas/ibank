@@ -12,8 +12,10 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
             integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
-    <script src="{{ url_for('static', filename = 'js/communication.js') }}">
+    <script src="{{ url_for('static', filename = 'js/websocket-communication.js') }}">
 
+    </script>
+    <script src="{{ url_for('static', filename = 'js/rest-communication.js') }}">
     </script>
 
 </head>
@@ -22,6 +24,8 @@
 <div class="container">
     <p>glowa</p>
     <button id="sendIdea" onclick="sendIdea()">Send Idea</button>
+    <button id="likeIdea" onclick="sendIdeaLike(1)">Like Idea</button>
+    <button id="addIdea" onclick="addNewIdea('Jakub','Test','Test')">Add idea</button>
     <div id="message" class="block"></div>
 </div>
 </body>

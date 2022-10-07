@@ -20,6 +20,14 @@ def add_idea():
     db.add_idea(idea_data['nick'], idea_data['subject'], idea_data['body'], g)
     return idea_data
 
+@app.route('/idea/like/<idea_id>', methods=['POST'])
+def like_idea(idea_id):
+    db.add_like_to_idea(idea_id, g)
+    return f"Idea with id {idea_id} liked successfully"
+
+@app.route('/idea/all')
+def get_all_idead():
+    return db.get_ideas(g)
 
 @socketio.on('message')
 def handle_message(data):

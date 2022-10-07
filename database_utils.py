@@ -17,6 +17,12 @@ def add_idea(nick, subject, body, g):
     conn.commit()
     conn.close()
 
+def add_like_to_idea(idea_id, g):
+    conn = get_db(g)
+    conn.execute(f'UPDATE idea SET likes = likes + 1 WHERE id = {idea_id}')
+    conn.commit()
+    conn.close()
+
 
 def close_connection(exception, g):
     print("Closing the connection to the database...")
