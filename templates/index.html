@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <title>Title</title>
     <link rel="icon" href="{{ url_for('static', filename = 'svg/kier.svg') }}" type="image/svg+xml">
@@ -17,28 +18,41 @@
     </script>
 
     <script>
-        function blinkOwl2() {
-            rndimg = new Array(
-                "../static/svg/owl-default-closed.svg",
-                "../static/svg/owl-default-open.svg",
-                "../static/svg/owl-left.svg",
-                "../static/svg/owl-right.svg");
-            var numimages = 4;
-            x = (Math.floor(Math.random() * numimages));
-            randomimage = (rndimg[x]);
-            document.getElementById("owl").src = randomimage;
+        var owlSemafor = true;
 
-            setTimeout(blinkOwl2, (Math.floor(Math.random() * 5000)));
+        function flyOwl1() {
+            document.getElementById("owl").src = "../static/svg/owl-left.svg";
+        }
+
+        function flyOwl2() {
+            document.getElementById("owl").src = "../static/svg/owl-right.svg";
+        }
+
+        function flyOwl3() {
+            document.getElementById("owl").src = "../static/svg/owl-default-open.svg";
+            owlSemafor = true;
+        }
+
+        function flyOwl() {
+            owlSemafor = false;
+            document.getElementById("owl").src = "../static/svg/owl-default-closed.svg";
+            setTimeout(flyOwl1, 500);
+            setTimeout(flyOwl2, 1000);
+            setTimeout(flyOwl3, 1500);
         }
 
         function blinkOwl() {
-            document.getElementById("owl").src = "../static/svg/owl-default-closed.svg";
-            setTimeout(defaultOwl, 1000);
+            if (owlSemafor) {
+                document.getElementById("owl").src = "../static/svg/owl-default-closed.svg";
+                setTimeout(defaultOwl, 1000);
+            }
         }
 
         function defaultOwl() {
-            document.getElementById("owl").src = "../static/svg/owl-default-open.svg";
-            setTimeout(blinkOwl, (Math.floor(Math.random() * 5000)));
+            if (owlSemafor) {
+                document.getElementById("owl").src = "../static/svg/owl-default-open.svg";
+                setTimeout(blinkOwl, (Math.floor(Math.random() * 10000)));
+            }
         }
 
         function init() {
@@ -46,43 +60,48 @@
             showInit();
             blinkOwl();
         }
+
+        function submitNewIdeaAndFly() {
+            flyOwl();
+            submitNewIdea();
+        }
     </script>
 
 </head>
 <body onload="init()">
-        <div class="container">
-            <!-- <div style="visibility: hidden">
-                <button id="sendIdea" onclick="sendIdea()">Send Idea</button>
-                <button id="likeIdea" onclick="sendIdeaLike(1)">Like Idea</button>
-                <button id="addIdea" onclick="addNewIdea('Jakub','Test','Test')">Add idea</button>
-                <div id="message" class="block"></div>
-            </div> -->
-            <div class="row header">
-              <div class="col header-first-col">
-                <div class="app-name">
-                    I-BANK
-                </div>
-                <div class="app-description">
-                    Bank for your wise Ideas
-                </div>
-              </div>
-              <div class="col-8 header-column" id="headerColumn">
-                <div class="card header-card">
-                        <div class="header-text">
-                            Your Idea was succesfully placed in our Bank. Thank you!
-                        </div>
-                </div>
-              </div>
+<div class="container">
+    <!-- <div style="visibility: hidden">
+        <button id="sendIdea" onclick="sendIdea()">Send Idea</button>
+        <button id="likeIdea" onclick="sendIdeaLike(1)">Like Idea</button>
+        <button id="addIdea" onclick="addNewIdea('Jakub','Test','Test')">Add idea</button>
+        <div id="message" class="block"></div>
+    </div> -->
+    <div class="row header">
+        <div class="col header-first-col">
+            <div class="app-name">
+                I-BANK
             </div>
-            <div class="row">
-                <div class="col">
-                    <img id="owl" src="../static/svg/owl-default-open.svg" alt="closed owl">
+            <div class="app-description">
+                Bank for your wise Ideas
+            </div>
+        </div>
+        <div class="col-8 header-column" id="headerColumn">
+            <div class="card header-card">
+                <div class="header-text">
+                    Your Idea was succesfully placed in our Bank. Thank you!
                 </div>
             </div>
-            <div class="row cards-row" id="rowCards">
-              <div class="col">
-                <div class="card">
-                    <div class="card-body">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <img id="owl" src="../static/svg/owl-default-open.svg" alt="closed owl">
+        </div>
+    </div>
+    <div class="row cards-row" id="rowCards">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
                     <div class="text">
                         This is some text within a card body.
                     </div>
@@ -90,181 +109,182 @@
                         <span class="badge">9</span>
                         <img src="../static/svg/kier.svg">
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text">
+                        This is some text within a card body.
+                    </div>
+                    <div class="badge-with-icon">
+                        <span class="badge">9</span>
+                        <img src="../static/svg/kier.svg">
                     </div>
                 </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="text">
-                            This is some text within a card body.
-                        </div>
-                        <div class="badge-with-icon">
-                            <span class="badge">9</span>
-                            <img src="../static/svg/kier.svg">
-                        </div>
-                        </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text">
+                        This is some text within a card body.
+                    </div>
+                    <div class="badge-with-icon">
+                        <span class="badge">9</span>
+                        <img src="../static/svg/kier.svg">
+                    </div>
                 </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="text">
-                            This is some text within a card body.
-                        </div>
-                        <div class="badge-with-icon">
-                            <span class="badge">9</span>
-                            <img src="../static/svg/kier.svg">
-                        </div>
-                        </div>
+            </div>
+        </div>
+    </div>
+    <div class="row cards-row two-col-row" id="rowCards2">
+        <div class="col first-col">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text">
+                        This is some text within a card body.
+                    </div>
+                    <div class="badge-with-icon">
+                        <span class="badge">9</span>
+                        <img src="../static/svg/kier.svg">
+                    </div>
                 </div>
-              </div>
             </div>
-            <div class="row cards-row two-col-row" id="rowCards2">
-                <div class="col first-col">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="text">
-                                This is some text within a card body.
-                            </div>
-                            <div class="badge-with-icon">
-                                <span class="badge">9</span>
-                                <img src="../static/svg/kier.svg">
-                            </div>
-                            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text">
+                        This is some text within a card body.
                     </div>
-                  </div>
-                  <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="text">
-                                This is some text within a card body.
-                            </div>
-                            <div class="badge-with-icon">
-                                <span class="badge">9</span>
-                                <img src="../static/svg/kier.svg">
-                            </div>
-                            </div>
+                    <div class="badge-with-icon">
+                        <span class="badge">9</span>
+                        <img src="../static/svg/kier.svg">
                     </div>
-                  </div>
+                </div>
             </div>
-            <div class="row cards-row" id="rowCards3">
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="text">
-                                This is some text within a card body.
-                            </div>
-                            <div class="badge-with-icon">
-                                <span class="badge">9</span>
-                                <img src="../static/svg/kier.svg">
-                            </div>
-                            </div>
+        </div>
+    </div>
+    <div class="row cards-row" id="rowCards3">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text">
+                        This is some text within a card body.
                     </div>
-                  </div>
-                  <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="text">
-                                This is some text within a card body.
-                            </div>
-                            <div class="badge-with-icon">
-                                <span class="badge">9</span>
-                                <img src="../static/svg/kier.svg">
-                            </div>
-                            </div>
+                    <div class="badge-with-icon">
+                        <span class="badge">9</span>
+                        <img src="../static/svg/kier.svg">
                     </div>
-                  </div>
-                  <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="text">
-                                This is some text within a card body.
-                            </div>
-                            <div class="badge-with-icon">
-                                <span class="badge">9</span>
-                                <img src="../static/svg/kier.svg">
-                            </div>
-                            </div>
-                    </div>
-                  </div>
-              </div>
-            <div class="row cards-row two-col-row" id="rowCards4">
-                <div class="col first-col">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="text">
-                                This is some text within a card body.
-                            </div>
-                            <div class="badge-with-icon">
-                                <span class="badge">9</span>
-                                <img src="../static/svg/kier.svg">
-                            </div>
-                            </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="card">
-                        <div class="card-body card-body-filled">
-                            <div class="text">
-                                This is some text within a card body. This is some text within a card body. This is some text within a card body. 
-                            </div>
-                            <div class="badge-with-icon">
-                                <span class="badge">9</span>
-                                <img src="../static/svg/kier.svg">
-                            </div>
-                            </div>
-                    </div>
-                  </div>
+                </div>
             </div>
-            <div class="row form-row" id="createForm" hidden>
-                <div class="col form-col">
-                    <form method="post" class="flex-column">
-                        <div class="form-group flex-row">
-                            <div class ="nick">
-                                <input type="text" name="nick" class="nick-input"
-                                       placeholder="Post author"
-                                       value="{{ request.form['nick'] }}"></input>
-                            </div>
-                            <div class="info-group">
-                                <div class="info">
-                                    <text class="info-label">When created:</text>
-                                    <text class="info-text" id="creationDate"></text>
-                                </div>
-                                <div class="info">
-                                    <text class="info-label">When disappears:</text>
-                                    <text class="info-text" id="disappearanceDate"></text>
-                                </div>
-                                <div class="info">
-                                    <text class="info-label">Likes:</text>
-                                    <text class="info-text"><b>001</b>&#09<img src="static/svg/kier.svg"/></text>
-                                </div>
-                            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text">
+                        This is some text within a card body.
+                    </div>
+                    <div class="badge-with-icon">
+                        <span class="badge">9</span>
+                        <img src="../static/svg/kier.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text">
+                        This is some text within a card body.
+                    </div>
+                    <div class="badge-with-icon">
+                        <span class="badge">9</span>
+                        <img src="../static/svg/kier.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row cards-row two-col-row" id="rowCards4">
+        <div class="col first-col">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text">
+                        This is some text within a card body.
+                    </div>
+                    <div class="badge-with-icon">
+                        <span class="badge">9</span>
+                        <img src="../static/svg/kier.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body card-body-filled">
+                    <div class="text">
+                        This is some text within a card body. This is some text within a card body. This is some text within a card body.
+                    </div>
+                    <div class="badge-with-icon">
+                        <span class="badge">9</span>
+                        <img src="../static/svg/kier.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row form-row" id="createForm" hidden>
+        <div class="col form-col">
+            <form method="post" class="flex-column">
+                <div class="form-group flex-row">
+                    <div class="nick">
+                        <input type="text" name="nick" class="nick-input"
+                               placeholder="Post author"
+                               value="{{ request.form['nick'] }}"></input>
+                    </div>
+                    <div class="info-group">
+                        <div class="info">
+                            <text class="info-label">When created:</text>
+                            <text class="info-text" id="creationDate"></text>
                         </div>
-                        <div class="form-group">
-                            <input type="text" name="subject" class="subject-input"
-                                   placeholder="Post title"
-                                   value="{{ request.form['subject'] }}"></input>
-                            <hr>
+                        <div class="info">
+                            <text class="info-label">When disappears:</text>
+                            <text class="info-text" id="disappearanceDate"></text>
                         </div>
-                        <div class="form-group left-right">
+                        <div class="info">
+                            <text class="info-label">Likes:</text>
+                            <text class="info-text"><b>001</b>&#09<img src="static/svg/kier.svg"/></text>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="subject" class="subject-input"
+                           placeholder="Post title"
+                           value="{{ request.form['subject'] }}"></input>
+                    <hr>
+                </div>
+                <div class="form-group left-right">
                                 <textarea name="description" placeholder="Post a brief description of the idea"
                                           class="description-area">{{ request.form['body'] }}</textarea>
-                        </div>
-                        <div class="form-group button-group">
-                            <button type="cancel" class="button-cancel" onclick="showInit()">Cancel</button>
-                            <button type="submit" class="button-send" onclick="submitNewIdea()">Send</button>
-                        </div>
-                    </form>
-                </div> 
-            </div>
-            <div class="row" id="createButton">
-                <div class="col create-button-column">
-                    <button type="button" class="btn btn-primary create-button" onclick="showForm()">Create your Idea</button>
                 </div>
-    </div>
+                <div class="form-group button-group">
+                    <button type="cancel" class="button-cancel" onclick="showInit()">Cancel</button>
+                    <button type="submit" class="button-send" onclick="submitNewIdeaAndFly()">Send</button>
+                </div>
+            </form>
         </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </div>
+    <div class="row" id="createButton">
+        <div class="col create-button-column">
+            <button type="button" class="btn btn-primary create-button" onclick="showForm()">Create your Idea</button>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 <script src="{{ url_for('static', filename = 'js/rest-communication.js') }}">
 </script>
