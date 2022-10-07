@@ -12,6 +12,9 @@ socketio = SocketIO(app)
 def hello():
     return render_template("index.html")
 
+@app.route('/ping')
+def ping():
+    return 'ok'
 
 @app.route('/idea/add', methods=['POST'])
 def add_idea():
