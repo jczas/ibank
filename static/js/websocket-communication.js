@@ -20,6 +20,10 @@ function init() {
 
         console.log(JSON.stringify(event));
     });
+
+    socket.on("update_ideas", (event) => {
+        messageDiv.innerHTML = "<p>reply:" + JSON.stringify(event) + "</p>";
+    });
 }
 
 function sendIdea() {
