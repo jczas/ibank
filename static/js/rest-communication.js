@@ -40,10 +40,6 @@ function addNewIdea(nick, subject, body) {
         });
 }
 
-function cancel() {
-    showInit();
-}
-
 function submitNewIdea() {
     console.log("Submitting...");
     showInit();
