@@ -10,7 +10,10 @@ function sendIdeaLike(ideaId) {
             },
         })
         .then((res) => {
-            console.log('Liked idea: ' + res)
+           return res.json()
+        })
+        .then((id) => {
+            console.log(id)
         })
 }
 
@@ -30,6 +33,9 @@ function addNewIdea(nick, subject, body) {
             body: JSON.stringify(ideaData)
         })
         .then((res) => {
-          console.log('Added idea: ' + res)
+          return res.json()
+        })
+        .then(id => {
+            console.log(id)
         })
 }
