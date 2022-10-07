@@ -27,4 +27,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tag: latest
+          tag: jczas/ibank:latest
