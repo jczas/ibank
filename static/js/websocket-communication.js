@@ -9,7 +9,7 @@ function fillLeafs(event) {
             "                        </div>\n",
             "                        <div class=\"badge-with-icon\">\n",
             "                            <span class=\"badge\">", event[i][5], "</span>\n",
-            "                            <img src=\"../static/svg/kier.svg\">\n",
+            `                            <img style='cursor: pointer' onclick='sendIdeaLike( ${event[i][0]} )' src=\"../static/svg/kier.svg\">\n`,
             "                        </div>"
         );
     }
