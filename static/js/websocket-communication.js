@@ -5,7 +5,7 @@ function fillLeafs(event) {
         const cardBodyDiv = getCardBodyById(i);
         cardBodyDiv.hidden = false;
         cardBodyDiv.innerHTML = "<div class=\"text\">\n".concat(
-            event[i][4], "\n",
+            event[i][3], "\n",
             "                        </div>\n",
             "                        <div class=\"badge-with-icon\">\n",
             "                            <span class=\"badge\">", event[i][5], "</span>\n",

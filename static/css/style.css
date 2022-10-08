@@ -45,6 +45,9 @@ body {
     align-items: center;
     justify-content: center;
     background-color: #92C14F !important;
+    border-radius: 14px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 .header-text {
@@ -64,7 +67,11 @@ body {
 .card {
     width: 400px;
     border-color: #849284 !important;
-    border-radius: 15px !important;
+    background-color: #5A7258 !important;
+    border-radius: 14px !important;
+    height: 76px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 .first-col {
@@ -91,11 +98,8 @@ body {
 .card-body {
     display: flex;
     justify-content: space-between;
-    background-color: #5A7258 !important;
+    background-color: #FDFBEF !important;
     border-radius: 14px !important;
-    height: 76px !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
     align-items: center;
 }
 
