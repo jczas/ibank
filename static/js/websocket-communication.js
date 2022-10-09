@@ -8,7 +8,7 @@ function fillLeafs(event) {
             event[i][3], "\n",
             "                        </div>\n",
             "                        <div class=\"badge-with-icon\">\n",
-            "                            <span class=\"badge\">", event[i][5], "</span>\n",
+            "                            <span class=\"badge\">", event[i][5], ":00 h</span>\n",
             `                            <img style='cursor: pointer' onclick='sendIdeaLike( ${event[i][0]} )' src=\"../static/svg/watering.svg\">\n`,
             "                        </div>"
         );

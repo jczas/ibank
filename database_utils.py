@@ -13,7 +13,7 @@ def add_idea(nick, subject, body, g):
     conn = get_db(g)
     conn_cursor = conn.cursor()
     conn_cursor.execute('INSERT INTO idea (nick,subject, body, likes, live_duration) VALUES (?,?,?,?,?)',
-                 (nick, subject, body, 1, 60))
+                 (nick, subject, body, 12, 60))
     conn.commit()
     return conn_cursor.lastrowid
 

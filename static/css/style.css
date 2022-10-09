@@ -227,9 +227,14 @@ body {
     flex-direction: column;
 }
 
+.info-icon {
+    padding-left: 10px;
+}
+
 .info-label {
     font-weight: 400;
     font-size: 16px;
+    text-align: right;
 }
 
 .info-text {
