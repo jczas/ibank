@@ -18,27 +18,21 @@
     </script>
 
     <script>
-        var owlSemafor = true;
-
-        function flyOwl1() {
-            document.getElementById("owl").src = "../static/svg/owl-left.svg";
-        }
-
-        function flyOwl2() {
-            document.getElementById("owl").src = "../static/svg/owl-right.svg";
-        }
-
-        function flyOwl3() {
-            document.getElementById("owl").src = "../static/svg/owl-default-open.svg";
-            owlSemafor = true;
-        }
+        let owlSemafor = true;
 
         function flyOwl() {
             owlSemafor = false;
             document.getElementById("owl").src = "../static/svg/owl-default-closed.svg";
-            setTimeout(flyOwl1, 500);
-            setTimeout(flyOwl2, 1000);
-            setTimeout(flyOwl3, 1500);
+            setTimeout(() => document.getElementById("owl").src = "../static/svg/owl-left.svg", 400);
+            setTimeout(() => document.getElementById("owl").src = "../static/svg/owl-right.svg", 600);
+            setTimeout(() => document.getElementById("owl").src = "../static/svg/owl-right.svg", 800);
+            setTimeout(() => document.getElementById("owl").src = "../static/svg/owl-left.svg", 1000);
+            setTimeout(() => document.getElementById("owl").src = "../static/svg/owl-right.svg", 1200);
+            setTimeout(() => document.getElementById("owl").src = "../static/svg/owl-left.svg", 1400);
+            setTimeout(() => {
+                document.getElementById("owl").src = "../static/svg/owl-default-open.svg";
+                owlSemafor = true;
+            }, 1600);
         }
 
         function blinkOwl() {
@@ -71,9 +65,9 @@
 <body onload="init()" id="slideshow">
 <div class="container">
     <div class="header">
-            <div class="app-name">
-                I-TREE
-            </div>
+        <div class="app-name">
+            I-TREE
+        </div>
         <div class="header-submenu">
             <div class="header-submenu-active header-submenu-element">
                 Planted Ideas
@@ -92,9 +86,9 @@
             </div>
 
         </div>
-            <div id="createButton" class="create-button-box">
-                <button type="button" class="btn btn-primary create-button" onclick="showForm()">Plant your Idea</button>
-            </div>
+        <div id="createButton" class="create-button-box">
+            <button type="button" class="btn btn-primary create-button" onclick="showForm()">Plant your Idea</button>
+        </div>
     </div>
     <div class="row">
         <div class="col owl-row">

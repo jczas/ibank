@@ -61,6 +61,10 @@ function submitNewIdea() {
     const form = document.querySelector('form');
     const formData = new FormData(form);
     addNewIdea(formData.get('nick'), formData.get('subject'), formData.get('description'))
+
+    setTimeout(() => {
+        document.getElementById('headerColumn').hidden = true;
+    }, 5000);
 }
 
 function preventFormReloading() {
