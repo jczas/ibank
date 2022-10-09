@@ -36,6 +36,26 @@ body {
     align-items: center;
 }
 
+.header-submenu {
+    display: flex;
+    padding-left: 20px;
+    font-size: 24px;
+    color: #F7E8B7;
+}
+
+.header-submenu-element {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.header-submenu-icon {
+    padding-left: 10px;
+}
+
+.header-submenu-active {
+    font-weight: 800;
+}
+
 .app-name {
     font-size: 64px;
     font-weight: 800;
@@ -61,7 +81,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #92C14F !important;
+    background-color: #FDFBEF !important;
+    border: 1px solid #F27127;
     border-radius: 14px !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
@@ -96,13 +117,17 @@ body {
     justify-content: flex-end;
 }
 
+.create-button-box {
+    padding-right: 20px;
+}
+
 .create-button {
     font-weight: 700 !important;
     font-size: 24px !important;
     background-color: #F27127 !important;
     color: #FFF7CA !important;
     height: 48px !important;
-    width: 495px !important;
+    width: 400px !important;
     border-color: #FFF7CA !important;
     border-radius: 15px !important;
 }
