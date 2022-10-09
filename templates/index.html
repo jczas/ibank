@@ -70,23 +70,22 @@
 </head>
 <body onload="init()" id="slideshow">
 <div class="container">
-    <div class="row header">
-        <div class="col header-first-col">
+    <div class="header">
             <div class="app-name">
                 I-TREE
             </div>
-        </div>
-        <div class="col-8 header-column" id="headerColumn">
-            <div class="header-card">
+            <div id="createButton">
+                <button type="button" class="btn btn-primary create-button" onclick="showForm()">Plant your Idea</button>
+            </div>
+    </div>
+    <div class="row">
+        <div class="col owl-row">
+            <img id="owl" src="../static/svg/owl-default-open.svg" alt="closed owl">
+            <div class="header-card" id="headerColumn">
                 <div class="header-text">
                     Your Idea was succesfully placed in our Bank. Thank you!
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <img id="owl" src="../static/svg/owl-default-open.svg" alt="closed owl">
         </div>
     </div>
     <div class="row cards-row" id="rowCards">
@@ -256,11 +255,6 @@
                     <button id="submitButton" type="submit" class="button-send" onclick="submitNewIdeaAndFly()">Plant</button>
                 </div>
             </form>
-        </div>
-    </div>
-    <div class="row" id="createButton">
-        <div class="col create-button-column">
-            <button type="button" class="btn btn-primary create-button" onclick="showForm()">Plant your Idea</button>
         </div>
     </div>
 </div>

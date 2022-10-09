@@ -31,12 +31,9 @@ body {
 }
 
 .header {
-    padding-left: 36px;
-}
-
-.header-first-col {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .app-name {
@@ -53,6 +50,9 @@ body {
 
 .header-column {
     padding-top: 3%;
+}
+.owl-row {
+    display: flex;
 }
 
 .header-card {
@@ -96,18 +96,13 @@ body {
     justify-content: flex-end;
 }
 
-.create-button-column {
-    display: flex;
-    justify-content: center;
-}
-
 .create-button {
     font-weight: 700 !important;
     font-size: 24px !important;
     background-color: #F27127 !important;
     color: #FFF7CA !important;
-    height: 58px !important;
-    width: 330px !important;
+    height: 48px !important;
+    width: 495px !important;
     border-color: #FFF7CA !important;
     border-radius: 15px !important;
 }
