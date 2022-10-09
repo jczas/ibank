@@ -71,6 +71,7 @@ body {
 .header-column {
     padding-top: 3%;
 }
+
 .owl-row {
     display: flex;
 }
@@ -323,4 +324,13 @@ body {
     font-weight: 700;
     font-size: 24px;
     color: #2B1A08;
+}
+
+
+.watering-icon {
+    cursor: pointer;
+}
+
+.watering-icon:hover {
+    transform: rotate(45deg);
 }
