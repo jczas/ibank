@@ -126,11 +126,10 @@ function validateInputs() {
         (document.getElementById('descriptionInput').value.length > 0)
     ) {
         document.getElementById('submitButton').disabled = false;
-        document.getElementById('submitButton').setAttribute("style", "background-color: #F27127;");
+        document.getElementById('submitButton').setAttribute("style", "background-color: #F27127;color: #2B1A08;border-color: #2B1A08;");
     } else {
         document.getElementById('submitButton').disabled = true;
-        document.getElementById('submitButton').setAttribute("style", "background-color: #CAD0C2;");
-
+        document.getElementById('submitButton').setAttribute("style", "background-color: #CAD0C2;color: #FDFBEF;border-color: #FDFBEF;");
     }
 }
 

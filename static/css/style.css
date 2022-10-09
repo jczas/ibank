@@ -25,7 +25,7 @@ body {
 .app-name {
     font-size: 64px;
     font-weight: 800;
-    color: #F27127;
+    color: #F7E8B7;
 }
 
 .app-description {
@@ -66,8 +66,8 @@ body {
 
 .card {
     width: 400px;
-    border-color: #849284 !important;
-    background-color: #5A7258 !important;
+    border-color: #FFF7CA !important;
+    background-color: #99C25E !important;
     border-radius: 14px !important;
     height: 76px !important;
     padding-top: 0 !important;
@@ -88,10 +88,10 @@ body {
     font-weight: 700 !important;
     font-size: 24px !important;
     background-color: #F27127 !important;
-    color: black !important;
+    color: #FFF7CA !important;
     height: 58px !important;
     width: 330px !important;
-    border-color: black !important;
+    border-color: #FFF7CA !important;
     border-radius: 15px !important;
 }
 
@@ -115,6 +115,10 @@ body {
 .badge {
     font-size: 20px !important;
     color: black !important;
+}
+
+.badge-with-icon {
+    display: flex;
 }
 
 .form-row {
@@ -192,6 +196,7 @@ body {
 }
 
 .info-text {
+    display: flex;
     font-weight: 400;
     font-size: 20px;
 }
@@ -212,7 +217,7 @@ body {
     border: 1px solid #FDFBEF;
     box-shadow: 0 0 0 rgba(0, 0, 0, 0.25);
     border-radius: 15px;
-    background-color: #F27127;
+    background-color: #CAD0C2;
     font-weight: 700;
     font-size: 24px;
     color: #FDFBEF;
