@@ -81,7 +81,6 @@ function showInit() {
     document.getElementById('rowCards2').hidden = false;
     document.getElementById('rowCards3').hidden = false;
     document.getElementById('rowCards4').hidden = false;
-    document.getElementById('createButton').hidden = false;
 }
 
 function showForm() {
@@ -91,12 +90,11 @@ function showForm() {
     document.getElementById('rowCards2').hidden = true;
     document.getElementById('rowCards3').hidden = true;
     document.getElementById('rowCards4').hidden = true;
-    document.getElementById('createButton').hidden = true;
     document.getElementById('nickInput').value = "";
     document.getElementById('subjectInput').value = "";
     document.getElementById('descriptionInput').value = "";
     document.getElementById('submitButton').disabled = true;
-    document.getElementById('submitButton').setAttribute("style", "background-color: #CAD0C2;");
+    document.getElementById('submitButton').setAttribute("class", "button-send-invalid");
     document.getElementById('creationDate').innerHTML = getDate(0).bold();
     document.getElementById('disappearanceDate').innerHTML = "In ".bold() + getDisappearanceTime(86400).bold();
 }
@@ -130,10 +128,10 @@ function validateInputs() {
         (document.getElementById('descriptionInput').value.length > 0)
     ) {
         document.getElementById('submitButton').disabled = false;
-        document.getElementById('submitButton').setAttribute("style", "background-color: #F27127;color: #2B1A08;border-color: #2B1A08;");
+        document.getElementById('submitButton').setAttribute("class", "button-send");
     } else {
         document.getElementById('submitButton').disabled = true;
-        document.getElementById('submitButton').setAttribute("style", "background-color: #CAD0C2;color: #FDFBEF;border-color: #FDFBEF;");
+        document.getElementById('submitButton').setAttribute("class", "button-send-invalid");
     }
 }
 
