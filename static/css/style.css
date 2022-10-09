@@ -4,13 +4,30 @@ html {
 
 body {
     height: 100%;
-    background-image: url(../svg/background-combined.svg);
+    /*background-image: url(../svg/background-combined.svg);*/
     background-size: 100% 100%;
     -o-background-size: 100% 100%;
     -webkit-background-size: 100% 100%;
     background-size: cover;
     font-family: 'Open Sans';
     font-style: normal;
+}
+
+#slideshow {
+    -webkit-animation-name: background;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes background {
+    0% {
+        background-image: url(../svg/background-combined.svg);
+    }
+    100% {
+        background-image: url(../svg/background-combined2.svg);
+    }
 }
 
 .header {
