@@ -84,7 +84,7 @@ body {
 .card {
     width: 400px;
     border-color: #FFF7CA !important;
-    background-color: #99C25E !important;
+    background-color: transparent !important;
     border-radius: 14px !important;
     height: 76px !important;
     padding-top: 0 !important;
