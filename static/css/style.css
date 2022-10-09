@@ -15,7 +15,7 @@ body {
 
 #slideshow {
     -webkit-animation-name: background;
-    -webkit-animation-duration: 5s;
+    -webkit-animation-duration: 2s;
     -webkit-animation-direction: alternate;
     -webkit-animation-timing-function: linear;
     -webkit-animation-iteration-count: infinite;
